@@ -1,0 +1,32 @@
+using System;
+
+namespace _02._Division
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int number = int.Parse(Console.ReadLine());
+            int final = 0;
+
+            for (int i = 2; i <= 10; i++)
+            {
+                if ((i == 2 || i == 3 || i == 6 || i == 7 || i == 10) && number % i == 0)
+
+                {
+                    final = i;
+                }
+
+            }
+            if (final == 0)
+            {
+                Console.WriteLine("Not divisible");
+            }
+            else
+            {
+                Console.WriteLine($"The number is divisible by {final}");
+            }
+
+        }
+    }
+}
