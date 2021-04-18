@@ -1,0 +1,48 @@
+using System;
+
+namespace _06._Strong_number
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int input = int.Parse(Console.ReadLine());
+            int output = input;
+            int factorial = 1;
+            int lastDigit = 0;
+            int sumFactorial = 0;
+
+            while (true)
+            {
+                lastDigit = output % 10;
+                output /= 10;
+
+
+                for (int j = 1; j <= lastDigit; j++)
+                {
+                    factorial *= j;
+
+                }
+
+                sumFactorial += factorial;
+                factorial = 1;
+
+                if (output < 1)
+                {
+                    break;
+                }
+
+            }
+
+            if (sumFactorial == input)
+            {
+                Console.WriteLine("yes");
+            }
+            else
+            {
+                Console.WriteLine("no");
+            }
+
+        }
+    }
+}
