@@ -1,0 +1,91 @@
+using System;
+
+namespace _07._Vending_Machine
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            string input = Console.ReadLine();
+            double coinsCollected = 0;
+            bool isTrue = false;
+
+
+            while (input != "Start")
+            {
+                double coinsInserted = double.Parse(input);
+                switch (coinsInserted)
+                {
+
+                    case 0.1:  
+                    case 0.2:
+                    case 0.5:
+                    case 1:
+                    case 2:
+                        coinsCollected += coinsInserted;
+                        break;
+
+                    default:
+                        Console.WriteLine($"Cannot accept {coinsInserted}");
+                        break;
+                }
+
+               
+                input = Console.ReadLine();
+
+            }
+
+            string purchase = Console.ReadLine();
+            double purchasePrice = 0;
+
+            while (purchase != "End")
+            {
+
+                switch (purchase)
+                {
+                    case "Nuts":
+                        purchasePrice = 2.0;
+                        break;
+                    case "Water":
+                        purchasePrice = 0.7;
+                        break;
+                    case "Crisps":
+                        purchasePrice = 1.5;
+                        break;
+                    case "Soda":
+                        purchasePrice = 0.8;
+                        break;
+                    case "Coke":
+                        purchasePrice = 1.0;
+
+                   
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid product");
+                        purchase = Console.ReadLine();
+                        continue;
+                }
+                
+                if (coinsCollected >= 0)
+                {
+                    coinsCollected -= purchasePrice;
+
+                    Console.WriteLine($"Purchased {purchase.ToLower()}");
+                }
+
+                else
+                {
+                    Console.WriteLine("Sorry, not enough money");
+                    
+                }
+
+                purchase = Console.ReadLine();
+            }
+
+            Console.WriteLine($"Change: {coinsCollected:F2}");
+
+        }
+    }
+}
