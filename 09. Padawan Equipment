@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+ 
+namespace excercise
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            float money = float.Parse(Console.ReadLine());
+            int numberOfStudents = int.Parse(Console.ReadLine());
+            float lightsaberPrice = float.Parse(Console.ReadLine());
+ 
+            float robesPrice = float.Parse(Console.ReadLine());
+            float beltsPrice = float.Parse(Console.ReadLine());
+ 
+            double lightsabers = 1;
+            lightsabers = Math.Ceiling((numberOfStudents * lightsabers) + ((numberOfStudents * lightsabers) * 0.1));
+            double belts = numberOfStudents;
+            double beltsAgain = belts;
+            double robes = numberOfStudents;
+ 
+            while (beltsAgain >= 6)
+            {
+                belts--;
+                beltsAgain -= 6;
+            }
+ 
+            double totalPrice = (lightsaberPrice * lightsabers) + (beltsPrice * belts) + (robes * robesPrice);
+ 
+            if (money >= totalPrice)
+            {
+                Console.WriteLine($"The money is enough - it would cost {totalPrice:F2}lv.");
+            }
+            else
+            {
+                double neededMoney = totalPrice - money;
+                Console.WriteLine($"Ivan Cho will need {neededMoney:F2}lv more.");
+            }
+ 
+        }
+    }
+}
