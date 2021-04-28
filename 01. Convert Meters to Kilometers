@@ -1,0 +1,16 @@
+using System;
+
+namespace _01._Convert_Meters_to_Kilometers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           int metersDistance = int.Parse(Console.ReadLine());
+
+            decimal resultInKilometers = metersDistance / 1000.0M;
+
+            Console.WriteLine($"{resultInKilometers:F2}");
+        }
+    }
+}
