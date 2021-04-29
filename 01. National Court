@@ -1,0 +1,39 @@
+using System;
+
+namespace _01._National_Court
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int firstPerson = int.Parse(Console.ReadLine());
+            int secondPerson = int.Parse(Console.ReadLine());
+            int thirdPerson = int.Parse(Console.ReadLine());
+
+            int totalPeople = int.Parse(Console.ReadLine());
+
+            int totalPerHour = firstPerson + secondPerson + thirdPerson;
+
+
+            int counter = 0;
+
+            while (totalPeople > 0)
+            {
+
+                totalPeople -= totalPerHour;
+                counter++;
+
+                if (counter % 4 == 0 )
+                {
+                    counter++;
+
+                }
+                
+
+            }
+            Console.WriteLine($"Time needed: {counter}h.");
+
+
+        }
+    }
+}
