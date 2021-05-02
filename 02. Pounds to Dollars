@@ -1,0 +1,14 @@
+using System;
+
+namespace _2._Pounds_to_Dollars
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            decimal inputPounds = decimal.Parse(Console.ReadLine());
+            decimal output = inputPounds * 1.31M;
+            Console.WriteLine($"{output:F3}");
+        }
+    }
+}
