@@ -1,0 +1,25 @@
+using System;
+
+namespace _10._Lower_or_Upper
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            char readChar = char.Parse(Console.ReadLine());
+
+            string upperCase= "upper-case";
+
+            string lowerCase = "lower-case";
+
+            if (readChar >= 65 && readChar <= 90)
+            {
+                Console.WriteLine(upperCase);
+            }
+            else
+            {
+                Console.WriteLine(lowerCase);
+            }
+        }
+    }
+}
