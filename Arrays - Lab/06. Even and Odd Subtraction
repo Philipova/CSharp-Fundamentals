@@ -1,0 +1,34 @@
+using System;
+using System.Linq;
+
+namespace 06._Even_And_Odd_Subtraction
+{
+    class MainClass
+    {
+        public static void Main(string[] args)
+        {
+
+            var numbers = Console.ReadLine().Split(' ',(char)StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+            var sumEven = 0;
+            var sumOdd = 0;
+            var sum = 0;
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+
+                if (numbers[i] % 2 == 0)
+                {
+                    sumEven += numbers[i];
+                }
+                else
+                {
+                    sumOdd += numbers[i];
+                }
+
+            }
+
+            Console.WriteLine(sum = sumEven - sumOdd);
+
+        }
+    }
+}
