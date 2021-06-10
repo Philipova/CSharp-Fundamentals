@@ -1,0 +1,21 @@
+using System;
+using System.Linq;
+
+namespace 04._ReverseArrayOfString
+{
+    class MainClass
+    {
+        public static void Main(string[] args)
+        {
+            var text2 = Console.ReadLine().Split().ToArray();
+
+            for (int i = 0; i < text2.Length / 2; i++)
+            {
+                var first = text2[i];
+                text2[i] = text2[text2.Length - 1 - i];
+                text2[text2.Length - 1 - i] = first;
+            }
+            Console.WriteLine(string.Join(" ", text2));
+        }
+    }
+}
