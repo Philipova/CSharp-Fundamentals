@@ -1,0 +1,47 @@
+using System;
+using System.Linq;
+
+namespace 02._CommonElements
+{
+    class MainClass
+    {
+        public static void Main(string[] args)
+        {
+            var FirstArr = Console.ReadLine()
+                .Split()
+                .ToArray();
+            var SecondArr = Console.ReadLine()
+                .Split()
+                .ToArray();
+
+            string[] finalArray = new string[0];
+            int count = 0;
+            int index = 0;
+
+            for (int i = 0; i < FirstArr.Length; i++)
+            {
+                for (int j = 0; j < SecondArr.Length; j++)
+                {
+
+                    if (FirstArr[i] == SecondArr[j])
+                    {
+                        count++;
+                        finalArray = new string[count];
+
+                        finalArray[index] = FirstArr[i];
+
+                        Console.Write($"{finalArray[index]} ");
+                        index++;
+
+                        
+                    }
+                   
+                }
+
+            }
+
+            //Console.Write(string.Join(" ", finalArray));
+
+        }
+    }
+}
