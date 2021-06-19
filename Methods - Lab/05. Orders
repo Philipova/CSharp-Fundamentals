@@ -1,0 +1,44 @@
+using System;
+
+namespace _05._Orders
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            string product = Console.ReadLine();
+            int number = int.Parse(Console.ReadLine());
+
+            switch (product)
+            {
+                case "coffee":
+                    double price = 1.50;
+                    TotalPrice(price, number);
+                    break;
+
+                case "water":
+                    price = 1.00;
+                    TotalPrice(price, number);
+                    break;
+
+                case "coke":
+                    price = 1.40;
+                    TotalPrice(price, number);
+                    break;
+
+                case "snacks":
+                    price = 2.00;
+                    TotalPrice(price, number);
+                    break;
+            }
+
+
+            static void TotalPrice(double price, int number)
+            {
+                Console.WriteLine($"{ price * number:F2}");
+            }
+            
+        }
+    }
+}
