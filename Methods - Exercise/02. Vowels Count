@@ -1,0 +1,76 @@
+using System;
+
+namespace _02._Vowels_Count_with_Method
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+
+            int result = PrintVowels(input);
+
+            Console.WriteLine(result);
+        }
+
+        public static int PrintVowels(string input)
+        {
+            int counter2 = 0;
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                char currentChar = input[i];
+
+                if (currentChar == 'a')
+                {
+                    counter2++;
+                }
+                else if (currentChar == 'A')
+                {
+                    counter2++;
+                }
+                else if (currentChar == 'e')
+                {
+                    counter2++;
+                }
+                else if (currentChar == 'E')
+                {
+                    counter2++;
+                }
+                else if (currentChar == 'i')
+                {
+                    counter2++;
+                }
+                else if (currentChar == 'I')
+                {
+                    counter2++;
+                }
+                else if (currentChar == 'o')
+                {
+                    counter2++;
+                }
+                else if (currentChar == 'O')
+                {
+                    counter2++;
+                }
+                else if (currentChar == 'u')
+                {
+                    counter2++;
+                }
+                else if (currentChar == 'U')
+                {
+                    counter2++;
+                }
+                else if (currentChar == 'y')
+                {
+                    counter2++;
+                }
+                else if (currentChar == 'Y')
+                {
+                    counter2++;
+                }
+            }
+            return counter2;
+        }
+    }
+}
