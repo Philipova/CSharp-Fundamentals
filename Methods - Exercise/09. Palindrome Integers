@@ -1,0 +1,57 @@
+using System;
+using System.Linq;
+
+namespace _09._Palindrome_Integers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //string input = Console.ReadLine();
+
+            string input = string.Empty;
+            while ((input =  "END") != (input = Console.ReadLine()))
+            {
+                char[] inputArrFirst = input.ToCharArray();
+                char[] inputArrSecond = new char [input.Length];
+
+ 
+                for (int i = 0; i < inputArrFirst.Length; i++)
+                {
+                    inputArrSecond[inputArrFirst.Length - 1 -i] = inputArrFirst[i];
+                }
+
+                bool isTrue = false;
+
+                for (int i = 0; i < inputArrFirst.Length; i++)
+                {
+
+                    
+                    if (inputArrFirst[i] != inputArrSecond[i])
+                    {
+                        isTrue = false;
+                        
+                        break;
+                    }
+                    else
+                    {
+                        isTrue = true;
+                       
+                    }
+                }
+
+                if (isTrue == true)
+                {
+                    Console.WriteLine("true");
+                }
+                else
+                {
+                    Console.WriteLine("false");
+                }
+
+                //input = Console.ReadLine();
+            }
+
+        }
+    }
+}
