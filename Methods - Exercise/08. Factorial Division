@@ -1,0 +1,44 @@
+using System;
+
+namespace _08._Factorial_Division
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int firstNumber = int.Parse(Console.ReadLine());
+            int secondNumber = int.Parse(Console.ReadLine());
+
+            double division = 1.0 * FirstFact(firstNumber) / SecondFact(secondNumber);
+            Console.WriteLine($"{division:F2}");
+
+            static double FirstFact(int firstNumber)
+
+            {
+                
+                double factFirst = 1;
+                for (int i = 1; i <= firstNumber; i++)
+                {
+                    factFirst = 1.0 * factFirst * i;
+
+                }
+
+                return factFirst;
+            }
+
+            static double SecondFact(int secondNumber)
+            {
+                double factSecond = 1;
+                for (int i = 1; i <= secondNumber; i++)
+                {
+                    factSecond = factSecond * i;
+
+                }
+
+                return factSecond;
+            }
+
+
+        }
+    }
+}
