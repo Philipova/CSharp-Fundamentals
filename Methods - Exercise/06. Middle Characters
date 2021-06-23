@@ -1,0 +1,27 @@
+using System;
+
+namespace _06._Middle_Characters
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+
+
+            char[] inputArr = input.ToCharArray();
+
+            if (input.Length % 2 == 0)
+            {
+                Console.WriteLine($"{(char)inputArr[input.Length / 2 - 1]}{(char)inputArr[input.Length / 2]}");
+
+            }
+            else if (input.Length % 2 != 0)
+            {
+                Console.WriteLine(inputArr[input.Length / 2]);
+            }
+            
+
+        }
+    }
+}
