@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace MergingLists
+{
+    class MainClass
+    {
+        public static void Main(string[] args)
+        {
+            List<int> firstInput = Console.ReadLine().Split().Select(int.Parse).ToList();
+            List<int> secondInput = Console.ReadLine().Split().Select(int.Parse).ToList();
+
+            List<int> final = new List<int>();
+
+            int minCount = Math.Min(firstInput.Count, secondInput.Count);
+
+            int start = Math.Min(firstInput.Count, secondInput.Count);
+            int end = Math.Max(firstInput.Count, secondInput.Count);
+
+            if (firstInput.Count >= secondInput.Count)
+            {
+                for (int i = 0; i < minCount; i++)
+                {
+
+                    final.Add(firstInput[i]);
+                    final.Add(secondInput[i]);
+
+                }
+
+                for (int i = start; i < end; i++)
+                {
+                    final.Add(firstInput[i]);
+                }
+            }
+
+            else if (firstInput.Count < secondInput.Count)
+            {
+                for (int i = 0; i < minCount; i++)
+                {
+
+                    final.Add(firstInput[i]);
+                    final.Add(secondInput[i]);
+                    
+                }
+
+                for (int i = start; i < end; i++)
+                {
+                    final.Add(secondInput[i]);
+                }
+            }
+
+            Console.WriteLine(string.Join(" ", final));
+            
+        }
+    }
+}
