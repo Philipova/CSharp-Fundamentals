@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _07._Append_Arrays
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> numbers = Console.ReadLine().Split("|", StringSplitOptions.RemoveEmptyEntries).ToList();
+
+            List<string> digits = new List<string>();
+            List<string> result = new List<string>();
+
+            numbers.Reverse();
+
+
+            foreach (string item in numbers)
+            {
+
+                digits = item.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                foreach (string itemToAdd in digits)
+                {
+                    result.Add(itemToAdd);
+                }
+
+            }
+
+
+            Console.WriteLine(string.Join(" ",result));
+
+        }
+    }
+}
