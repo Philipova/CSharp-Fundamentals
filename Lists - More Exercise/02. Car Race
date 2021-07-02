@@ -1,0 +1,90 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _02._Car_Race
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> input = Console.ReadLine().Split().Select(int.Parse).ToList();
+                        
+            int middleIndex = input.Count / 2;
+
+
+            double leftCar = firstCarSum(middleIndex, input);
+            double rightCar = secondCarSum(middleIndex, input);
+
+            if (leftCar > rightCar)
+            {
+                Console.WriteLine($"The winner is right with total time: {rightCar}");
+
+            }
+
+            else if (leftCar < rightCar)
+            {
+                Console.WriteLine($"The winner is left with total time: {leftCar}");
+            }
+
+
+        }
+
+        private static double secondCarSum(int middleIndex, List<int> input)
+        {
+            List <double> secondCar = new List<double>();
+            double secondCarTime = 0;
+
+            for (int i = input.Count -1; i > middleIndex; i--)
+            {
+                if (input[i] == 0)
+                {
+                    secondCarTime += input[i];
+                    //firstCarTime = firstCar.Sum();
+                    secondCarTime = secondCarTime - (secondCarTime * 0.2);
+
+                }
+
+                else if (input[i] != 0)
+                {
+                    secondCarTime += input[i];
+                    //firstCarTime = firstCar.Sum();
+                }
+
+            }
+
+            return secondCarTime;
+        }
+
+        private static double firstCarSum(int middleIndex, List<int> input )
+        {
+            List<double> firstCar = new List<double>();
+            double firstCarTime = 0;
+
+            for (int i = 0; i < middleIndex; i++)
+            {
+
+                
+                //firstCar.Add(input[i]);
+
+                if (input[i] == 0)
+                {
+                    firstCarTime += input[i];
+                    //firstCarTime = firstCar.Sum();
+                    firstCarTime = firstCarTime - (firstCarTime * 0.2);
+                    
+                }
+
+                else if (input[i] != 0)
+                {
+                    firstCarTime += input[i];
+                    //firstCarTime = firstCar.Sum();
+                }
+                
+
+            }
+
+            return firstCarTime;
+        }
+    }
+}
