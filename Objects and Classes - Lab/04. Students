@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+
+namespace _04._Students
+{
+    class StudentsList
+
+    {
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Age { get; set; }
+        public string City { get; set; }
+
+
+    }
+    
+    
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            List <StudentsList> names = new List <StudentsList>();
+
+            string[] input = Console.ReadLine().Split();
+
+            while (input[0] != "end")
+            {
+
+                StudentsList newEntry = new StudentsList();
+
+                newEntry.FirstName = input[0];
+                newEntry.LastName = input[1];
+                newEntry.Age = input[2];
+                newEntry.City = input[3];
+
+                names.Add(newEntry);
+
+                input = Console.ReadLine().Split();
+
+            }
+
+            string cityName = Console.ReadLine();
+
+            foreach (StudentsList item in names)
+            {
+
+                if (item.City == cityName)
+                {
+                    Console.WriteLine($"{item.FirstName} {item.LastName} is {item.Age} years old.");
+                }
+            }
+
+
+        }
+    }
+}
