@@ -1,0 +1,40 @@
+using System;
+using System.Linq;
+
+namespace _5._Digits__Letters_and_Other
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            string digits = string.Empty;
+            string letters = string.Empty;
+            string others = string.Empty;
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                char symbol = input[i];
+                
+                
+                if (Char.IsDigit(symbol) == true)
+                {
+                    digits += symbol;
+                }
+                else if (Char.IsLetter(symbol) == true)
+                {
+                    letters += symbol;
+                }
+                else
+                {
+                    others += symbol;
+                }
+
+            }
+
+            Console.WriteLine(digits);
+            Console.WriteLine(letters);
+            Console.WriteLine(others);
+        }
+    }
+}
