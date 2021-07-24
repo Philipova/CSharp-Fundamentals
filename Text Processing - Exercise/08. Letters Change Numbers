@@ -1,0 +1,64 @@
+using System;
+
+namespace _08.__Letters_Change_Numbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] input = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            double resultString = 0;
+            //int secondOperation = 0;
+            double final = 0;
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                string value = string.Empty;
+
+                for (int j = 0; j < input[i].Length; j++)
+                {
+
+                    char sym = input[i][j];
+
+                    if (char.IsDigit(sym) == true)
+                    {
+                        value += sym;
+                    }
+
+                }
+                int num = int.Parse(value); 
+
+                char firstSymbol = input[i][0];
+                char finalSymbol = input[i][input[i].Length-1];
+                
+                if (firstSymbol >= 65 && firstSymbol <= 90)
+                {
+                    double positon = firstSymbol - 64;
+                    resultString = num / positon;
+                    
+                }
+                else if (firstSymbol >= 97 && firstSymbol <= 122)
+                {
+                    double positon = firstSymbol - 96;
+                    resultString = num * positon;
+                }
+
+                if (finalSymbol >= 65 && finalSymbol <= 90)
+                {
+                    double positon = finalSymbol - 64;
+                    resultString -= positon;
+                }
+
+                else if (finalSymbol >= 97 && finalSymbol <= 122)
+                {
+                    double positon = finalSymbol - 96;
+                    resultString += positon;
+                }
+
+                final += resultString;
+            }
+
+            Console.WriteLine($"{final:F2}");
+        }
+    }
+}
