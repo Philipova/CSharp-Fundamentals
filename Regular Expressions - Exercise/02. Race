@@ -1,0 +1,76 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _02._Race
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string participant = Console.ReadLine();
+            string input = Console.ReadLine();
+            var list = new Dictionary<string, int>();
+
+            while (input != "end of race")
+            {
+                string[] names = participant.Split(", ");
+                string name = string.Empty;
+                int digit = 0;
+
+                for (int i = 0; i < input.Length; i++)
+                {
+                    if (Char.IsLetter(input[i]) == true)
+                    {
+                        name += input[i].ToString();
+                    }
+                    else if (Char.IsDigit(input[i]) == true)
+                    {
+                        digit += int.Parse(input[i].ToString());
+                    }
+
+                }
+
+
+
+                for (int i = 0; i < names.Length; i++)
+                {
+
+                    if (names[i] == name)
+                    {
+
+                        if (list.ContainsKey(name) == false)
+                        {
+                            list.Add(name, digit);
+                            break;
+                        }
+                        else
+                        {
+                            list[name] += digit;
+                            break;
+                        }
+
+
+                    }
+
+                }
+
+                input = Console.ReadLine();
+
+            }
+
+
+            var newList = list.OrderByDescending(x => x.Value).Select(x => x.Key).Take(3).ToList();
+
+
+            string first = newList[0];
+            string second = newList[1];
+            string third = newList[2];
+
+            Console.WriteLine($"1st place: {first}");
+            Console.WriteLine($"2nd place: {second}");
+            Console.WriteLine($"3rd place: {third}");
+
+        }
+    }
+}
