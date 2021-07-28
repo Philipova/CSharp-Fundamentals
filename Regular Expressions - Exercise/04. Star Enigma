@@ -1,0 +1,88 @@
+using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System.Linq;
+
+namespace _04._Star_Enigma
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            int attackPlanetCounter = 0;
+            int destroyPlanetCounter = 0;
+            List<string> attachedPlanet = new List<string>();
+            List<string> destroyPlanet = new List<string>();
+
+            for (int i = 0; i < n; i++)
+            {
+
+                string input = Console.ReadLine();
+                string template = @"S|s|T|t|A|a|R|r";
+
+                var regex = Regex.Matches(input, template);
+                List<string> counter = new List<string>();
+
+                foreach (Match item in regex)
+                {
+                    counter.Add(item.ToString());
+                }
+
+                int key = int.Parse(counter.Count.ToString());
+
+                string newString = string.Empty;
+
+                foreach (var item in input)
+                {
+                    char newChar = (char) ((char)item - key);
+                    newString += newChar;
+                }
+
+                string pattern = @"@(?<planet>[A-z]+)[^@:!\->]*\w*:(?<pop>\d+)[^@:!\->]*!(?<attack>A|D)![^@:!\->]*->(?<soldier>\d+)[^@:!\->]*";
+
+
+                var result = Regex.Matches(newString, pattern);
+
+
+                foreach (Match item in result)
+                {
+                    string planetName = item.Groups["planet"].Value;
+                    string population = item.Groups["pop"].Value;
+                    string attack = item.Groups["attack"].Value;
+                    string soldier = item.Groups["soldier"].Value;
+
+
+                    if (attack == "A")
+                    {
+                        attackPlanetCounter++;
+                        attachedPlanet.Add(planetName);
+
+                    }
+                    else if (attack == "D")
+                    {
+                        destroyPlanetCounter++;
+                        destroyPlanet.Add(planetName);
+                    }
+
+                }
+
+            }
+
+                        
+            Console.WriteLine($"Attacked planets: {attackPlanetCounter}");
+
+            foreach (var item in attachedPlanet.OrderBy(x=> x))
+            {
+                Console.WriteLine($"-> {item}");
+            }
+
+            Console.WriteLine($"Destroyed planets: {destroyPlanetCounter}");
+
+            foreach (var item in destroyPlanet.OrderBy(x => x))
+            {
+                Console.WriteLine($"-> {item}");
+            }
+        }
+    }
+}
