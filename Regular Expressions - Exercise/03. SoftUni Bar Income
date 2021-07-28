@@ -1,0 +1,73 @@
+using System;
+using System.Text.RegularExpressions;
+using System.Linq;
+
+namespace _03._SoftUni_Bar_Income
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+
+            string patternName = @"%([A-Z][a-z]+)%";
+            string patternProduct = @"<(\w+)>";
+            string patternCount = @"\|(\d+)\|";
+            string patternPrices = @".(\d+\.?\d+)\$";
+
+
+            double income = 0;
+
+            while (input != "end of shift")
+            {
+                double totalPrice = 0;
+                string name = string.Empty;
+                string product = string.Empty;
+                int count = 0;
+                double price = 0;
+
+                var names = Regex.Matches(input, patternName);
+                var products = Regex.Matches(input, patternProduct);
+                var counts = Regex.Matches(input, patternCount);
+                var prices = Regex.Matches(input, patternPrices);
+
+
+                foreach (Match item in names)
+                {
+                    name = item.Groups[1].Value;
+
+                }
+
+                foreach (Match item in products)
+                {
+                    product = item.Groups[1].Value;
+                }
+
+                foreach (Match item in counts)
+                {
+                    count = int.Parse(item.Groups[1].Value);
+                }
+
+                foreach (Match item in prices)
+                {
+                    price = double.Parse(item.Groups[1].Value);
+                }
+
+                if (name != string.Empty && product != string.Empty && count != 0 && price != 0)
+                {
+                    totalPrice = count * price;
+                    Console.WriteLine($"{name}: {product} - {totalPrice:F2}");
+
+                    income += totalPrice;
+
+
+
+                }
+
+                input = Console.ReadLine();
+            }
+
+            Console.WriteLine($"Total income: {income:F2}");
+        }
+    }
+}
