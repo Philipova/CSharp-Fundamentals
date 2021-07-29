@@ -1,0 +1,114 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+ 
+namespace Winning_Ticket
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string line = Console.ReadLine();            
+            string[] linesplit = line.Split(new char[] { ' ', ','}, StringSplitOptions.RemoveEmptyEntries);                    
+            char a = '"';
+            int counter;
+            for (int i = 0; i <linesplit.Length;i++)
+            {
+                int counter1first = 0;
+                int counter2first = 0;
+                int counter3first = 0;
+                int counter4first = 0;
+                int counter1second = 0;
+                int counter2second = 0;
+                int counter3second = 0;
+                int counter4second = 0;
+                if (linesplit[i].Length == 20)
+                {
+                    for (int j=0 ; j <10;j++)
+                    {                                      
+                        if (linesplit[i][j] =='@' ) { counter1first++;}
+                        if (linesplit[i][j] == '#') { counter2first++;}
+                        if (linesplit[i][j] == '$') { counter3first++;}
+                        if (linesplit[i][j] == '^') { counter4first++;}
+                    }
+                    for (int j = 10; j <20; j++)
+                    {
+                        if (linesplit[i][j] == '@') { counter1second++; }
+                        if (linesplit[i][j] == '#') { counter2second++; }
+                        if (linesplit[i][j] == '$') { counter3second++; }
+                        if (linesplit[i][j] == '^') { counter4second++; }
+                    }
+                    if(counter1first==10&&counter1second==10)
+                    {
+                        Console.WriteLine($"ticket {a}{linesplit[i]}{a} - 10@ Jackpot!");
+                        continue;
+                    }
+                    if(counter2first == 10 && counter2second == 10)
+                    {
+                        Console.WriteLine($"ticket {a}{linesplit[i]}{a} - 10# Jackpot!");
+                        continue;
+ 
+                    }
+                    if(counter3first == 10 && counter3second == 10)
+                    {
+                        Console.WriteLine($"ticket {a}{linesplit[i]}{a} - 10$ Jackpot!");
+                        continue;
+                    }
+                    if(counter4first == 10 && counter4second == 10)
+                    {
+                        Console.WriteLine($"ticket {a}{linesplit[i]}{a} - 10^ Jackpot!");
+                        continue;
+                    }
+                    if (counter1first>=6 && counter1second>=6)
+                    {
+                        counter = Min(counter1first, counter1second);
+                        Console.WriteLine($"ticket {a}{linesplit[i]}{a} - {counter}@");
+                        continue;
+                    }
+                    else if (counter2first >= 6 && counter2second >= 6)
+                    {
+                        counter = Min(counter2first, counter2second);
+                        Console.WriteLine($"ticket {a}{linesplit[i]}{a} - {counter}#");
+                        continue;
+                    }
+                    else if (counter3first >= 6 && counter3second >= 6)
+                    {
+                        counter = Min(counter3first, counter3second);
+                        Console.WriteLine($"ticket {a}{linesplit[i]}{a} - {counter}$");
+                        continue;
+                    }
+                    else if (counter4first >= 6 && counter4second >= 6)
+                    {
+                        counter = Min(counter4first, counter4second);
+                        Console.WriteLine($"ticket {a}{linesplit[i]}{a} - {counter}^");
+                        continue;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"ticket {a}{linesplit[i]}{a} - no match");
+                       
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"invalid ticket");
+                }
+            }
+            
+        }
+        static int Min(int a,int b)
+        {
+            int min;
+            if (a <= b) min = a;
+            else
+            {
+                min = b;
+            }
+            return min;
+ 
+        }
+        
+    }
+}
